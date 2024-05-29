@@ -1,4 +1,5 @@
-
+import Header from "./componentes/Header";
+import footer from "./componentes/Footer";
 
 export const metadata = {
   title: "Meu Shop.com",
