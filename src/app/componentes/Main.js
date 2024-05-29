@@ -15,7 +15,6 @@ const data = await response.json();
             <p>Categoria: {produto.categoria}</p>
             <Image width={200} height={200}
               src= {produto.imagens}/>
-              <p>{produto.rating.count}</p>
             </div>
         )}
       

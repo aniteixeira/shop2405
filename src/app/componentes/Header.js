@@ -1,17 +1,15 @@
-export default Header;
+import styles from "./header.module.css"
+export default function Header(){
 
-const Header = () => {
     return (
-        <header>
-            <div>
-                <img src="/logo.png" alt="Logo"/>
-            </div>
-
-            <div>
-                <button>Adicionar novo produto</button>
-                <img src="/icone.png" alt="Icone"/>
-            </div>
-            <p>Acompanhe nossos lançamentos incríveis</p>
-        </header>
+  <nav className={styles.navbar}>
+    <div className={styles.navbar_brand}>Shop Main</div>
+    <ul className={styles.navbar_menu}>
+     <li className={styles.navbar_item}><a href="#home">Início</a></li>
+     <li className={styles.navbar_item}><a href="#">Início</a></li>
+     <li className={styles.navbar_item}><a href="#">Início</a></li>
+     <li className={styles.navbar_item}><a href="#">Início</a></li>
+     </ul>
+     </nav>
     );
 };
