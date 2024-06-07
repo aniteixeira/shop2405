@@ -34,6 +34,7 @@ export default function Footer(){
                     heigth={30}
                     src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi6f3fz3-qVnSYcTy-ZnYTvmYGsVQKjlMNfQ&s"}/>
                      <spam>TikTok</spam>
+                     
                 </li>
                 <Image
                 width={60}
