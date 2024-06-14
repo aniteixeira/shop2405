@@ -1,9 +1,10 @@
 'use client'
 import Image from "next/image"
+import Spinner from "./Spinner";
 import styles from "./main.module.css"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export default async function Main(){
+export default function Main(){
 
   const [listProduct, setListProduct] = useState([]);
 
@@ -18,41 +19,59 @@ setListProduct(data);
 getProduct();
 }, []);
 
-const orderAZ = () =>{
-  const newList = [...listProduct].sort( (a,b) =>
-    a.title.localeCompare(b.title)
+const orderAz = () =>{
+  const newList = [...listProduct].sort( (a, b) =>
+      a.title.localeCompare(b.title)
   );
   setListProduct(newList);
 }
-
 const orderZa = () =>{
-  let newList = [...listProduct].sort( (a,b) =>
-    a.title.localeCompare(b.title)
+  let newList = [...listProduct].sort( (a, b) =>
+      a.title.localeCompare(b.title)
   );
   newList = newList.reverse();
   setListProduct(newList);
 }
 
+if(listProduct[0] == null){
+  return <Spinner/>
+}
+const orderPrice = () =>{
+  let newList = [...listProduct].sort( (a, b) =>
+      a.price - b.price
+  );
+  setListProduct(newList);
+}
+const orderPriceReverse = () =>{
+  let newList = [...listProduct].sort( (a, b) =>
+      a.price - b.price
+  );
+  newList = newList.reverse();
+  setListProduct(newList);
+}
 
   return (
     <>
     <div>
-      <button onClick={orderAZ}>AZ</button>
+      <button onClick={orderAz}>AZ</button>
       <button onClick={orderZa}>ZA</button>
+      <button onClick={orderPrice}>Menor preço para o maior</button>
+      <button onClick={orderPriceReverse}>Maior preço para o menor</button>
     </div>
     <main className={styles.main}>
-        {listProduct.map((products) => 
-        <div className={styles.card} key={products.id}>
-          <h3>{products.title}</h3>
-            <p>Preço: ${products.price}</p>
-            <p>Descrição: {produto.description}</p>
-            <p>Categoria: {products.category}</p>
-            <p>Estoque: {products.rating.count}</p>
-            <Image width={200} height={200}
-              src= {products.imagem}/>
+        {listProduct.map((product) => 
+        <div className={styles.card} key={product.id}>
+          <h3>{product.title}</h3>
+            <p>Preço: ${product.price}</p>
+            <p>Descrição: {product.description}</p>
+            <p>Categoria: {product.category}</p>
+            <p>Estoque: {product.rating.count}</p>
+            <Image 
+            width={200} 
+            height={200}
+            src= {product.image}/>
             </div>
         )}
-      
     </main>
     </>
   );
